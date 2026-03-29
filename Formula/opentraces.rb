@@ -11,6 +11,10 @@ class Opentraces < Formula
   depends_on "python@3.12"
 
   def install
+    # Create empty viewer dist so hatchling force-include doesn't fail
+    mkdir_p buildpath/"web/viewer/dist"
+    (buildpath/"web/viewer/dist/index.html").write "<html><body>Install viewer separately</body></html>"
+
     venv = virtualenv_create(libexec, "python3.12")
     venv.pip_install buildpath/"packages/opentraces-schema"
     venv.pip_install_and_link buildpath
