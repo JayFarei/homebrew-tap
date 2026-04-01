@@ -3,18 +3,14 @@ class Opentraces < Formula
 
   desc "Crowdsource agent traces to HuggingFace Hub"
   homepage "https://opentraces.ai"
-  url "https://github.com/JayFarei/opentraces/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "PLACEHOLDER"
+  url "https://github.com/JayFarei/opentraces/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "25d485590664e331f6798f3ed01d14e103c7170414e90e1218e16ee4ad183e42"
   license "MIT"
   head "https://github.com/JayFarei/opentraces.git", branch: "main"
 
   depends_on "python@3.12"
 
   def install
-    # Create empty viewer dist so hatchling force-include doesn't fail
-    mkdir_p buildpath/"web/viewer/dist"
-    (buildpath/"web/viewer/dist/index.html").write "<html><body>Install viewer separately</body></html>"
-
     venv = virtualenv_create(libexec, "python3.12")
     venv.pip_install buildpath/"packages/opentraces-schema"
     venv.pip_install_and_link buildpath
