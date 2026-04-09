@@ -1,18 +1,23 @@
 class Lazymem < Formula
   desc "Terminal UI memory monitor for macOS dev environments"
   homepage "https://github.com/JayFarei/lazymem"
-  url "https://github.com/JayFarei/lazymem/archive/refs/tags/v0.1.1.tar.gz"
-  sha256 "365f663f90f47e6c03814e72dea88090e72fef638ddd411fb61d84fa0921be8d"
   license "MIT"
-  head "https://github.com/JayFarei/lazymem.git", branch: "main"
+  version "0.2.1"
 
-  depends_on "bun"
-  depends_on :macos
+  on_macos do
+    if Hardware::CPU.arm?
+      url "https://github.com/JayFarei/lazymem/releases/download/v0.2.1/lazymem-v0.2.1-aarch64-apple-darwin.tar.gz"
+      sha256 "e5bfdabe10a2f8e4b4970603d100024e1d1cf1814fee00487249445e3c87739f"
+    else
+      url "https://github.com/JayFarei/lazymem/releases/download/v0.2.1/lazymem-v0.2.1-x86_64-apple-darwin.tar.gz"
+      sha256 "8f673703dfc4d8035c7e606e6150075229688503d2229e4bb9bebba68b0bced4"
+    end
+  end
 
   def install
-    system "bun", "install", "--production"
-    libexec.install Dir["*"]
-    (bin/"lazymem").write_env_script libexec/"bin/lazymem", PATH: "#{Formula["bun"].opt_bin}:${PATH}"
+    bin.install "bin/lazymem"
+    pkgshare.install "README.md", "LICENSE"
+    pkgshare.install "skill"
   end
 
   test do
