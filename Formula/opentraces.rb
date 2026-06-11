@@ -3,8 +3,8 @@ class Opentraces < Formula
 
   desc "Crowdsource agent traces to HuggingFace Hub"
   homepage "https://opentraces.ai"
-  url "https://github.com/JayFarei/opentraces/archive/refs/tags/otbox-captures-v1.tar.gz"
-  sha256 "c22df928adfb03a6e807cee58a3e72744d44319a0ed318dc3565ea128f07cfa8"
+  url "https://github.com/JayFarei/opentraces/archive/refs/tags/v0.4.1.tar.gz"
+  sha256 "854b12d23ba81047da57197638566120497bed25ed3bbcac6f1c1f729f53fb76"
   license "MIT"
   head "https://github.com/JayFarei/opentraces.git", branch: "main"
 
