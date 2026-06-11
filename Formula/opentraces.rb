@@ -12,8 +12,12 @@ class Opentraces < Formula
 
   def install
     venv = virtualenv_create(libexec, "python3.12")
-    venv.pip_install buildpath/"packages/opentraces-schema"
-    venv.pip_install_and_link buildpath
+    # venv.pip_install runs with --no-deps (expects vendored resources);
+    # this tap resolves dependencies from PyPI instead, so call pip directly.
+    system libexec/"bin/pip", "install", "--no-input", buildpath/"packages/opentraces-schema"
+    system libexec/"bin/pip", "install", "--no-input", buildpath.to_s
+    bin.install_symlink libexec/"bin/opentraces"
+    bin.install_symlink libexec/"bin/ot"
   end
 
   test do
