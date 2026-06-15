@@ -3,8 +3,8 @@ class Opentraces < Formula
 
   desc "Crowdsource agent traces to HuggingFace Hub"
   homepage "https://opentraces.ai"
-  url "https://github.com/JayFarei/opentraces/archive/refs/tags/v0.4.2.tar.gz"
-  sha256 "3c27c52f677e5cd382d5555ffcd0b278b16f1bc551ef92ed3e84a1cbc6f4b017"
+  url "https://github.com/JayFarei/opentraces/archive/refs/tags/v0.4.3.tar.gz"
+  sha256 "ffb92520672f4d77d1b4b3533d4633888f053bb1feba8250901851404f5e5e12"
   license "MIT"
   head "https://github.com/JayFarei/opentraces.git", branch: "main"
 
